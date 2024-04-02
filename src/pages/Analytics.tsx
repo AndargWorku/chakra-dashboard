@@ -6,7 +6,7 @@ import RecentSalesTable from '../components/RecentSalesTable';
 import PopularProductsPage from '../components/PopularProductsPage';
 
 const BrandCard: React.FC = () => {
-  // Sample data
+  
   const brands = [
     { name: 'Brand A', popularity: 80 },
     { name: 'Brand B', popularity: 60 },
@@ -85,7 +85,7 @@ const NetProfitOrdersRevenueCard: React.FC = () => {
     { month: 'December', profit: 1900 },
   ];
 
-  // Sample data for Orders
+ 
   const orderData = [
     { month: 'January', orders: 50 },
     { month: 'February', orders: 70 },
@@ -101,7 +101,7 @@ const NetProfitOrdersRevenueCard: React.FC = () => {
     { month: 'December', orders: 190 },
   ];
 
-  // Sample data for Revenue
+  
   const revenueData = [
     { month: 'January', revenue: 1000 },
     { month: 'February', revenue: 1500 },
@@ -117,7 +117,7 @@ const NetProfitOrdersRevenueCard: React.FC = () => {
     { month: 'December', revenue: 3800 },
   ];
 
-  // Combine data into one dataset
+  
   const combinedData = profitData.map((item, index) => ({
     month: item.month,
     profit: item.profit,
@@ -189,7 +189,7 @@ const Analytics: React.FC = () => {
           ))}
         </Box>
 
-        {/* Categories */}
+     
         <Box boxShadow="xl" p={4} borderRadius="md" flex="1" minWidth="200px">
           <Flex align="center">
             <Icon as={FaList} boxSize={10} color="rgba(0, 100, 0, 0.5)" />
@@ -201,7 +201,6 @@ const Analytics: React.FC = () => {
           ))}
         </Box>
 
-        {/* Reviews */}
         <Box boxShadow="xl" p={4} borderRadius="md" flex="1" minWidth="200px">
           <Flex align="center">
             <Icon as={FaStar} boxSize={10} color="rgba(0, 100, 0, 0.5)" />
@@ -214,24 +213,14 @@ const Analytics: React.FC = () => {
         </Box>
       </Flex>
 
-      {/* Second row */}
       <Flex direction={{ base: "column", md: "row" }} justify="space-between" gap={4}>
-        {/* Net Profit, Orders, Revenue Card */}
+        
         <NetProfitOrdersRevenueCard />
-
-        {/* Brands Card */}
         <BrandCard />
-
-        {/* Sales/Revenue Card */}
         <SalesRevenueCard />
       </Flex>
-
-      {/* Third row */}
       <Flex direction={{ base: "column", md: "row" }} justify="space-between" gap={4}>
-        {/* Recent Sales Table */}
         <RecentSalesTable />
-
-        {/* Popular Products Page */}
         <PopularProductsPage />
       </Flex>
     </Flex>
