@@ -160,7 +160,7 @@ const Dashboard: React.FC = () => {
         <BarChart width={500} height={300} data={productData}  >
           <Tooltip />
           <Legend />
-          <Bar dataKey="count" fill="#00800080" barSize={10}   />
+          <Bar dataKey="count" fill="#00800080" barSize={13}   />
         </BarChart>
       </Box> 
 
