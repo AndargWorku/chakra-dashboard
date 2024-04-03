@@ -30,7 +30,7 @@ interface Product {
 const PopularProductsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [itemsPerPage] = useState<number>(5);
+  const [itemsPerPage] = useState<number>(3);
 
   // Sample data
   const products: Product[] = 
@@ -221,7 +221,7 @@ const PopularProductsPage: React.FC = () => {
         />
       </Flex>
       <Table variant={tableVariant} size="md" colorScheme="teal">
-        <TableCaption placement="top">Popular Products</TableCaption>
+        {/* <TableCaption placement="top">Popular Products</TableCaption> */}
         <Thead>
           <Tr>
             <Th>Name</Th>

@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { Box, Text, Flex, useColorModeValue } from '@chakra-ui/react';
-import { LineChart, Line, Tooltip } from 'recharts';
+import { LineChart, Line, Tooltip, ResponsiveContainer } from 'recharts';
 import { AiOutlineShop, AiOutlineShopping, AiOutlineStar, AiOutlineAppstore } from 'react-icons/ai';
-import { FiArrowUp, FiArrowDown } from 'react-icons/fi'; // Importing the arrow icons
+import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
 
 interface AnalyticsCardProps {
   title: string;
@@ -25,15 +25,17 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({ title, value, data, icon 
       p={6}
       borderRadius="lg"
       boxShadow="xl"
-      width={{ base: "100%", sm: "45%", md: "30%", lg: "22%" }} // Responsive width
-      height={{ base: "auto", sm: "200px", md: "220px", lg: "240px" }} // Responsive height
+      width="100%" // Set width to 100% to make the card fill its container
+      maxWidth={{ base: "100%", sm: "45%", md: "30%", lg: "22%" }} // Adjust max width based on screen size
+      minWidth="200px" // Set min width to ensure cards are not too narrow on small screens
+      height={{ base: "auto", sm: "200px", md: "220px", lg: "240px" }}
       display="flex"
       flexDirection="column"
       margin="4"
-      position="relative" // Add position relative for absolute positioning of percentage
+      position="relative"
     >
       <Flex align="center" mb={4}>
-        {React.cloneElement(icon, { color: 'green' })} {/* Set icon color to green */}
+        {React.cloneElement(icon, { color: 'green' })}
         <Text fontSize="xl" fontWeight="bold" ml={2}>
           {title}
         </Text>
@@ -42,15 +44,17 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({ title, value, data, icon 
         {value}k
       </Text>
       <Flex flex="1" direction="column" justify="flex-end">
-        <LineChart width={250} height={100} data={data}>
-          <Line
-            type="monotone"
-            dataKey="value"
-            stroke="#00ff00" // Set stroke to green
-            isAnimationActive={true} // Disable animation to hide the rectangle background
-          />
-          <Tooltip isAnimationActive={true} /> {/* Hide tooltips */}
-        </LineChart>
+        <ResponsiveContainer width="100%" height="80%">
+          <LineChart data={data}>
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke="#00ff00"
+              isAnimationActive={true}
+            />
+            <Tooltip isAnimationActive={true} />
+          </LineChart>
+        </ResponsiveContainer>
       </Flex>
       <Box
         position="absolute"
@@ -58,7 +62,6 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({ title, value, data, icon 
         right="8px"
         fontSize="sm"
         fontWeight="bold"
-        
         color={isIncreasing ? 'green' : 'red'}
       >
         {isIncreasing ? <FiArrowUp /> : <FiArrowDown />}
@@ -77,7 +80,6 @@ const FullAnalyticsPage: React.FC = () => {
     { name: 'apr', value: 8 },
     { name: 'jun', value: 12 },
     { name: 'jula', value: 13 },
-    // Add more data points as needed
   ];
 
   const productData = [
@@ -87,7 +89,6 @@ const FullAnalyticsPage: React.FC = () => {
     { name: 'apr', value: 20 },
     { name: 'jun', value: 15 },
     { name: 'jula', value: 25 },
-    // Add more data points as needed
   ];
 
   const reviewData = [
@@ -103,14 +104,13 @@ const FullAnalyticsPage: React.FC = () => {
     { name: 'Category A', value: 15 },
     { name: 'Category B', value: 20 },
     { name: 'Category C', value: 10 },
-    // Add more data points as needed
   ];
 
   return (
-    <Flex justify="center" align="center" height="100%">
-      <Flex direction="row" align="center" flexWrap="wrap">
+    <Flex justify="center" align="center" height="100%" overflowX="auto" pl="30px">
+      <Flex direction="row" align="center" flexWrap="nowrap"> {/* Set flexWrap to nowrap to keep the cards in one line */}
         <AnalyticsCard title="Total Shop" value={10} data={shopData} icon={<AiOutlineShop size={24} />} />
-        <AnalyticsCard title="Total Product" value={50} data={productData} icon={<AiOutlineShopping size={24} />} />
+        <AnalyticsCard title="all Product" value={50} data={productData} icon={<AiOutlineShopping size={24} />} />
         <AnalyticsCard title="Review" value={20} data={reviewData} icon={<AiOutlineStar size={24} />} />
         <AnalyticsCard title="Category" value={45} data={categoryData} icon={<AiOutlineAppstore size={24} />} />
       </Flex>
@@ -121,10 +121,12 @@ const FullAnalyticsPage: React.FC = () => {
 export default FullAnalyticsPage;
 
 
+
 // import React from 'react';
 // import { Box, Text, Flex, useColorModeValue } from '@chakra-ui/react';
 // import { LineChart, Line, Tooltip } from 'recharts';
-// import { AiOutlineShop, AiOutlineShopping, AiOutlineFileText, AiOutlineStar, AiOutlineAppstore } from 'react-icons/ai';
+// import { AiOutlineShop, AiOutlineShopping, AiOutlineStar, AiOutlineAppstore } from 'react-icons/ai';
+// import { FiArrowUp, FiArrowDown } from 'react-icons/fi'; 
 
 // interface AnalyticsCardProps {
 //   title: string;
@@ -144,19 +146,17 @@ export default FullAnalyticsPage;
 //     <Box
 //       bgColor={cardBgColor}
 //       p={6}
-
-
 //       borderRadius="lg"
 //       boxShadow="xl"
-//       width={{ base: "100%", sm: "45%", md: "30%", lg: "22%" }} // Responsive width
-//       height={{ base: "auto", sm: "200px", md: "220px", lg: "240px" }} // Responsive height
+//       width={{ base: "100%", sm: "45%", md: "30%", lg: "22%" }} 
+//       height={{ base: "auto", sm: "200px", md: "220px", lg: "240px" }} 
 //       display="flex"
 //       flexDirection="column"
 //       margin="4"
-//       position="relative" // Add position relative for absolute positioning of percentage
+//       position="relative" 
 //     >
 //       <Flex align="center" mb={4}>
-//         {React.cloneElement(icon, { color: 'green' })} {/* Set icon color to green */}
+//         {React.cloneElement(icon, { color: 'green' })} 
 //         <Text fontSize="xl" fontWeight="bold" ml={2}>
 //           {title}
 //         </Text>
@@ -169,8 +169,8 @@ export default FullAnalyticsPage;
 //           <Line
 //             type="monotone"
 //             dataKey="value"
-//             stroke="#00ff00" // Set stroke to green
-//             isAnimationActive={true} // Disable animation to hide the rectangle background
+//             stroke="#00ff00" 
+//             isAnimationActive={true} 
 //           />
 //           <Tooltip isAnimationActive={true} /> {/* Hide tooltips */}
 //         </LineChart>
@@ -181,9 +181,11 @@ export default FullAnalyticsPage;
 //         right="8px"
 //         fontSize="sm"
 //         fontWeight="bold"
+        
 //         color={isIncreasing ? 'green' : 'red'}
 //       >
-//         {`${isIncreasing ? '+' : '-'}${Math.abs(Number(percentageChange.toFixed(2)))}%`}
+//         {isIncreasing ? <FiArrowUp /> : <FiArrowDown />}
+//         {`${Math.abs(Number(percentageChange.toFixed(2)))}%`}
 //       </Box>
 //     </Box>
 //   );
@@ -198,7 +200,7 @@ export default FullAnalyticsPage;
 //     { name: 'apr', value: 8 },
 //     { name: 'jun', value: 12 },
 //     { name: 'jula', value: 13 },
-//     // Add more data points as needed
+    
 //   ];
 
 //   const productData = [
@@ -208,17 +210,7 @@ export default FullAnalyticsPage;
 //     { name: 'apr', value: 20 },
 //     { name: 'jun', value: 15 },
 //     { name: 'jula', value: 25 },
-//     // Add more data points as needed
-//   ];
-
-//   const orderData = [
-//     { name: 'Jan', value: 10 },
-//     { name: 'Feb', value: 18 },
-//     { name: 'Mar', value: 15 },
-//     { name: 'apr', value: 30 },
-//     { name: 'jun', value: 15 },
-//     { name: 'jula', value: 20 },
-    
+   
 //   ];
 
 //   const reviewData = [
@@ -228,14 +220,13 @@ export default FullAnalyticsPage;
 //     { name: 'apr', value: 8 },
 //     { name: 'jun', value: 10 },
 //     { name: 'jula', value: 12 },
-    
 //   ];
 
 //   const categoryData = [
 //     { name: 'Category A', value: 15 },
 //     { name: 'Category B', value: 20 },
 //     { name: 'Category C', value: 10 },
-//     // Add more data points as needed
+   
 //   ];
 
 //   return (
@@ -243,7 +234,6 @@ export default FullAnalyticsPage;
 //       <Flex direction="row" align="center" flexWrap="wrap">
 //         <AnalyticsCard title="Total Shop" value={10} data={shopData} icon={<AiOutlineShop size={24} />} />
 //         <AnalyticsCard title="Total Product" value={50} data={productData} icon={<AiOutlineShopping size={24} />} />
-//         {/* <AnalyticsCard title="Total Order" value={303} data={orderData} icon={<AiOutlineFileText size={24} />} /> */}
 //         <AnalyticsCard title="Review" value={20} data={reviewData} icon={<AiOutlineStar size={24} />} />
 //         <AnalyticsCard title="Category" value={45} data={categoryData} icon={<AiOutlineAppstore size={24} />} />
 //       </Flex>
@@ -252,4 +242,6 @@ export default FullAnalyticsPage;
 // };
 
 // export default FullAnalyticsPage;
+
+
 

@@ -19,7 +19,7 @@ import AnalyticalPage from "../pages/Analytics";
 import FullAnalyticsPage from "./AnalyticalCard";
 import ShopsCategoriesReviewsPage from "./ShopsCategoriesReviewsPage";
 import PopularProductsPage from "./PopularProductsPage";
-// import ReviewPage from "../pages/ReviewPage";
+import ReviewPage from "../pages/ReviewPage";
 
 export {};
 // Sample data for demonstration purposes
@@ -96,7 +96,8 @@ const Dashboard: React.FC = () => {
     >
       <FullAnalyticsPage/>
        {/* Category Statistics */}
-       <Box
+       
+        <Box
         flex="1"
         boxShadow="xl"
         borderRadius="lg"
@@ -108,11 +109,11 @@ const Dashboard: React.FC = () => {
         <Text fontSize="xl" mb={4}>
           Category Statistics
         </Text>
-        <AreaChart width={400} height={300} data={categoryData}>
+        <AreaChart width={380} height={300} data={categoryData}>
           <Tooltip />
           <Area type="monotone" dataKey="count" fill="#00800080" />
         </AreaChart>
-      </Box>
+      </Box> 
       <Box
        flex="1"
       //  boxShadow="xl"
@@ -129,7 +130,7 @@ const Dashboard: React.FC = () => {
       borderRadius="lg"
       p={6}
       m={4}
-      maxW="600px"
+      maxW="560px"
       textAlign="center"
       >
    <PopularProductsPage/>
@@ -149,17 +150,17 @@ const Dashboard: React.FC = () => {
         borderRadius="lg"
         p={6}
         m={4}
-        maxW="600px"
+        maxW="560px"
         textAlign="center"
       >
       
         <Text fontSize="xl" mb={4}>
           Product Statistics
         </Text>
-        <BarChart width={300} height={250} data={productData}  >
+        <BarChart width={500} height={300} data={productData}  >
           <Tooltip />
           <Legend />
-          <Bar dataKey="count" fill="#00800080"  />
+          <Bar dataKey="count" fill="#00800080" barSize={10}   />
         </BarChart>
       </Box> 
 
@@ -218,7 +219,7 @@ const Dashboard: React.FC = () => {
           </Text>
           <Text fontSize="lg">Total Reviews: {reviewData.length}</Text>
           <Box>
-          {/* <ReviewPage/> */}
+          <ReviewPage/>
           </Box>       
         </Box>                 
       </Box>
