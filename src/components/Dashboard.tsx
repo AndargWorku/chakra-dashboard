@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 import {
   BarChart,
   Bar,
@@ -95,6 +95,16 @@ const Dashboard: React.FC = () => {
       direction={["column", "row"]}
     >
       <FullAnalyticsPage/>
+
+      <Flex
+      flexWrap="wrap"
+      justify="around"
+      align="center"
+      direction="row"
+
+      >
+
+
        {/* Category Statistics */}
        
         <Box
@@ -125,6 +135,11 @@ const Dashboard: React.FC = () => {
       >
       <Statics/>
       </Box>
+      </Flex>
+
+
+      <Stack direction="row" spacing={4}>
+
       <Box flex="1"
       // boxShadow="xl"
       borderRadius="lg"
@@ -150,19 +165,29 @@ const Dashboard: React.FC = () => {
         borderRadius="lg"
         p={6}
         m={4}
-        maxW="560px"
+        maxW="540px"
         textAlign="center"
       >
       
         <Text fontSize="xl" mb={4}>
           Product Statistics
         </Text>
-        <BarChart width={500} height={300} data={productData}  >
+        <BarChart width={470} height={300} data={productData}  >
           <Tooltip />
           <Legend />
           <Bar dataKey="count" fill="#00800080" barSize={13}   />
         </BarChart>
       </Box> 
+      </Stack>
+
+
+      <Flex
+      flexWrap="wrap"
+      justify="around"
+      align="center"
+      direction="row"
+
+      >
 
       {/* Shop Statistics */}
       <Box
@@ -219,10 +244,11 @@ const Dashboard: React.FC = () => {
           </Text>
           <Text fontSize="lg">Total Reviews: {reviewData.length}</Text>
           <Box>
-          <ReviewPage/>
+          {/* <ReviewPage/> */}
           </Box>       
         </Box>                 
       </Box>
+      </Flex>
       </Flex>
     </Flex>
   );
