@@ -97,6 +97,10 @@ const Dashboard: React.FC = () => {
       align="center"
       direction={["column", "row"]}
     >
+      
+
+      
+      
       <FullAnalyticsPage/>
 
       <Stack
@@ -114,13 +118,13 @@ const Dashboard: React.FC = () => {
         borderRadius="lg"
         p={6}
         m={4}
-        maxW="400px"
+        maxW="500px"
         textAlign="center"
       >
         <Text fontSize="xl" mb={4}>
           Category Statistics
         </Text>
-        <AreaChart width={380} height={300} data={categoryData}>
+        <AreaChart width={480} height={300} data={categoryData}>
           <Tooltip />
           <Area type="monotone" dataKey="count" fill="#00800080" />
         </AreaChart>
@@ -131,7 +135,7 @@ const Dashboard: React.FC = () => {
        borderRadius="lg"
        p={6}
        m={4}
-       maxW="700px"
+       maxW="500px"
        textAlign="center"
       >
       <Statics/>
@@ -146,7 +150,7 @@ const Dashboard: React.FC = () => {
       borderRadius="lg"
       p={6}
       m={4}
-      maxW="560px"
+      maxW="500px"
       textAlign="center"
       >
    <PopularProductsPage/>
@@ -166,14 +170,14 @@ const Dashboard: React.FC = () => {
         borderRadius="lg"
         p={6}
         m={4}
-        maxW="540px"
+        maxW="500px"
         textAlign="center"
       >
       
         <Text fontSize="xl" mb={4}>
           Product Statistics
         </Text>
-        <BarChart width={470} height={300} data={productData}  >
+        <BarChart width={450} height={300} data={productData}  >
           <Tooltip />
           <Legend />
           <Bar dataKey="count" fill="#00800080" barSize={13}   />
@@ -195,13 +199,13 @@ const Dashboard: React.FC = () => {
         borderRadius="lg"
         p={6}
         m={4}
-        maxW="400px"
+        maxW="500px"
         textAlign="center"
       >
         <Text fontSize="xl" mb={4}>
           Shop Statistics
         </Text>
-        <PieChart width={400} height={300}>
+        <PieChart width={470} height={300}>
           <Pie
             data={shopData}
             cx="50%"
@@ -226,14 +230,14 @@ const Dashboard: React.FC = () => {
         borderRadius="lg"
         p={6}
         m={4}
-        maxW="700px"
+        maxW="500px"
         textAlign="center"
         
       >
         <Text fontSize="xl" mb={4}>
           Review Statistics
         </Text>
-        <LineChart width={400} height={300} data={reviewData}>
+        <LineChart width={470} height={300} data={reviewData}>
           <Tooltip />
           <Line type="monotone" dataKey="rating" stroke="rgba(0, 128, 0, 0.8)" />
         </LineChart>

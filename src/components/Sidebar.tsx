@@ -77,13 +77,13 @@ const Sidebar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
               _hover={{ bgColor: ' #006400', color: '#fff', margin: '10px', borderRadius: '10px' }}
               _active={{ bgColor: ' #006400', color: '#fff', margin: '10px', borderRadius: '10px' }}
             >
-              <Box className="icon" marginRight="3">
+              <Box className="icon" marginRight="1">
                 {item.icon}
               </Box>
               <Text
                 display={isOpen ? 'block' : 'none'}
                 className="link_text text-sm"
-                marginLeft="3"
+                marginLeft="1"
               >
                 {item.name}
               </Text>

@@ -226,7 +226,7 @@ const PopularProductsPage: React.FC = () => {
           <Tr>
             <Th>Name</Th>
             <Th>Price ($)</Th>
-            <Th>Description</Th>
+            {/* <Th>Description</Th> */}
             <Th>Brand</Th>
             <Th>Stock Quantity</Th>
           </Tr>
@@ -236,7 +236,7 @@ const PopularProductsPage: React.FC = () => {
             <Tr key={product.id}>
               <Td>{product.name}</Td>
               <Td>{product.price}</Td>
-              <Td>{product.description}</Td>
+              {/* <Td>{product.description}</Td> */}
               <Td>{product.brand}</Td>
               <Td>{product.stockQuantity}</Td>
             </Tr>
