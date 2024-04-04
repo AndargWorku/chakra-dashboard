@@ -96,11 +96,9 @@ const Dashboard: React.FC = () => {
     >
       <FullAnalyticsPage/>
 
-      <Flex
-      flexWrap="wrap"
-      justify="around"
-      align="center"
+      <Stack
       direction="row"
+      spacing={4}
 
       >
 
@@ -135,7 +133,7 @@ const Dashboard: React.FC = () => {
       >
       <Statics/>
       </Box>
-      </Flex>
+      </Stack>
 
 
       <Stack direction="row" spacing={4}>
@@ -181,12 +179,10 @@ const Dashboard: React.FC = () => {
       </Stack>
 
 
-      <Flex
-      flexWrap="wrap"
-      justify="around"
-      align="center"
+      <Stack
       direction="row"
-
+      spacing={4}
+      
       >
 
       {/* Shop Statistics */}
@@ -220,7 +216,7 @@ const Dashboard: React.FC = () => {
       </Box>
 
       {/* Review Statistics */}
-      <Flex direction="row" justify="between">
+      
       <Box
         flex="1"
         boxShadow="xl"
@@ -248,8 +244,8 @@ const Dashboard: React.FC = () => {
           </Box>       
         </Box>                 
       </Box>
-      </Flex>
-      </Flex>
+      </Stack>
+      
     </Flex>
   );
 };
